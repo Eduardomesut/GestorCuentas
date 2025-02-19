@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE map
+PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
+"http://java.sun.com/products/javahelp/map_2_0.dtd">
+<map version="1.0">
+   <mapID target="aplicacion" url="html/main.html" />
+   <mapID target="operacion_avanzada" url="html/basica.html" />
+   <mapID target="operacion_basica" url="html/avanzada.html" />
+   <mapID target="ventana_suma" url="html/suma.html" />
+   <mapID target="ventana_resta" url="html/resta.html" />
+   <mapID target="ventana_multiplicacion" url="html/multiplicacion.html" />
+   <mapID target="ventana_division" url="html/division.html" />
+   <mapID target="ventana_raicescuadradas" url="html/raicescuadradas.html" />
+</map>

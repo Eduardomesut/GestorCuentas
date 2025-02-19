@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<toc version="1.0"> <!--  categoryclosedimage="FolderClosed" categoryopenimage="FolderOpened"  
+topicimage="ItemIco"-->
+        <tocitem text="Ejemplo JavaHelp"    target="aplicacion">
+           <tocitem text="Operacion avanzada"    target="operacion_avanzada">
+           <tocitem text="Raiz cuadrada"    target="ventana_raicescuadradas"/>
+           </tocitem>
+           
+           <tocitem text="Operacion basica"    target="operacion_basica">
+           <tocitem text="Suma"    target="ventana_suma"/>
+           <tocitem text="Resta"    target="ventana_resta"/>
+           <tocitem text="Multiplicacion"    target="ventana_multiplicacion"/>
+           <tocitem text="Division"    target="ventana_division"/>
+           </tocitem>
+           
+        </tocitem>
+</toc>

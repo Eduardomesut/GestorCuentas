@@ -4,7 +4,8 @@
  */
 package interfaz;
 
-import helpLoad.HelpLoader;
+
+import java.io.File;
 import java.net.URL;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
@@ -23,10 +24,9 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        ponLaAyuda();
+        
     }
-    HelpSet helpSet;
-            HelpBroker hb;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +51,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,8 +93,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 190, 90));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/tarde/Escritorio/Interfaces/CallCentre/img/customer-service.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 213, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(51, 153, 255));
@@ -120,6 +119,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Help");
+        jMenu3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jMenu3ItemStateChanged(evt);
+            }
+        });
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu3MouseClicked(evt);
@@ -130,6 +134,15 @@ public class Menu extends javax.swing.JFrame {
                 jMenu3ActionPerformed(evt);
             }
         });
+
+        jMenuItem1.setText("Mostrar Ayuda");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -158,15 +171,24 @@ public class Menu extends javax.swing.JFrame {
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         // TODO add your handling code here:
         
-        hb.setDisplayed(true); 
+       
         
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-         hb.setDisplayed(true); 
+        
         
     }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenu3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jMenu3ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3ItemStateChanged
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+         showHelp();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,6 +235,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -220,26 +243,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     // End of variables declaration//GEN-END:variables
 
-    private void ponLaAyuda() {
-        try{
-            URL hsURL = HelpLoader.class.getResource("/help/helpset.hs");
-            if (hsURL == null) {
-                System.err.println("Archivo helpset no encontrado");
-                return;
-            }
-
-   
-            
-            helpSet = new HelpSet(null, hsURL);
-            hb = helpSet.createHelpBroker();
-            hb.enableHelpOnButton(jMenu3, "ventana_principal", helpSet);
-            
-            
-            
-        }catch(Exception e){
+    public void showHelp() {
+        try {
+            File f = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = f.toURI().toURL();
+            HelpSet hs = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = hs.createHelpBroker();
+            hb.setDisplayed(true);
+        } catch (Exception e) {
             e.printStackTrace();
         }
- 
     }
     
     
